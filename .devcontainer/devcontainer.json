@@ -1,0 +1,15 @@
+{
+    "name": "Codespaces Meltano CLI Starter",
+    "extensions": [
+        "z3z1ma.meltano-power-user",
+        "redhat.vscode-yaml",
+    ],
+    "dockerFile": "Dockerfile",
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/sh",
+        "files.exclude": {
+            "**/CODE_OF_CONDUCT.md": true,
+            "**/LICENSE": true
+        }
+    }
+}
