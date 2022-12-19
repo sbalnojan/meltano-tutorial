@@ -6,7 +6,6 @@
     ],
     "dockerFile": "Dockerfile",
     "settings": {
-        "terminal.integrated.shell.linux": "/bin/sh",
         "files.exclude": {
             "**/CODE_OF_CONDUCT.md": true,
             "**/LICENSE": true
