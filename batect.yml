@@ -9,7 +9,7 @@ containers:
 
   build-env-cache:
     image: meltano/meltano:v2.11.0-python3.10 #v2.4.0-python3.8 
-    working_directory: /home/container-user
+    working_directory: /home/container-user/my_project
     volumes:
       - local: ./new_project
         container: /home/container-user/new_project
