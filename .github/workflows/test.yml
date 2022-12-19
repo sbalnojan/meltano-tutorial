@@ -1,8 +1,4 @@
 name: Pipeline
-env:
-  TERM: xterm-256color
-  BATECT_CACHE_TYPE: directory
-  BATECT_ENABLE_TELEMETRY: true
 
 on: [push]
 
@@ -10,6 +6,10 @@ jobs:
   build:
     name: "Build and Test"
     runs-on: ubuntu-latest
+    env:
+      TERM: xterm-256color
+      BATECT_CACHE_TYPE: directory
+      BATECT_ENABLE_TELEMETRY: true
 
     steps:
       - uses: actions/checkout@v3.2.0
