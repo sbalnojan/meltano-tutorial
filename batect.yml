@@ -4,7 +4,7 @@ containers:
     working_directory: /home/container-user
     volumes:
       - local: ./new_project
-        container: /new_project
+        container: /home/container-user/new_project
         options: cached
 tasks:
   melt:
