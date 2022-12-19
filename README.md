@@ -9,10 +9,8 @@ Running with batect & codespaces.
 ``./batect melt``
 
 to do a quick start, run:
-- meltano init .
-- cp ../new_project/meltano.yml meltano.yml
-- cp ../new_project/.env .env
-- meltano install
+- ./batect test (first to fill the cache)
+- ./batect melt (second to open up your terminal)
 
 and edit the .env file. Then you can do the invoke & run steps right away!
 
