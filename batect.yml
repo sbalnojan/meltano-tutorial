@@ -25,9 +25,18 @@ tasks:
       container: build-env-cache
       entrypoint: sh
 
+  test:
+    description: Open a shell in our cool meltano env to run some stuff. Make sure to launch_mock in a separate terminal tab!
+    group: Do these tasks
+    run:
+      container: build-env-cache
+      entrypoint: sh -c 'meltano init . && cp ../new_project/meltano.yml meltano.yml && cp ../new_project/.env .env && meltano install'
+    
+
   clean:
     description: Delete meltano taps and so on to play around with the installation of plugins locally.
     group: Utility tasks
     run:
-      container: build-env
-      entrypoint: sh -c 'rm -rf .meltano/*'
+      container: build-env-cache
+      entrypoint: sh -c 'ls -A1 | xargs rm -rf'
+  
