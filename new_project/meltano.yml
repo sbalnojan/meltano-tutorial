@@ -6,4 +6,12 @@ plugins:
     config:
       repositories:
       - meltano/meltano
-      start_date: "2022-01-01"
+      start_date: '2022-01-01'
+    select:
+    - commits.url
+    - commits.sha
+    - commits.commit_timestamp
+  loaders:
+  - name: target-jsonl
+    variant: andyh1203
+    pip_url: target-jsonl
