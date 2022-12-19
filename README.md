@@ -8,7 +8,8 @@ Running with batect & codespaces.
 2. inside codespaces run 
 ``./batect melt``
 
-to do a quick start, run Part 1: Step 1 (init), and then do a 
+to do a quick start, run:
+- cd my_project
 - rm my-meltano-project/meltano.yml
 - cp new_project/meltano.yml my-meltano-project/meltano.yml
 - cp new_project/.env my-meltano-project/.env
