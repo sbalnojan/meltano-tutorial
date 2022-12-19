@@ -6,12 +6,23 @@ containers:
       - local: ./new_project
         container: /home/container-user/new_project
         options: cached
+
+  build-env-cache:
+    image: meltano/meltano:v2.11.0-python3.10 #v2.4.0-python3.8 
+    working_directory: /home/container-user
+    volumes:
+      - local: ./new_project
+        container: /home/container-user/new_project
+        options: cached
+      - local: ./my_project
+        container: /home/container-user/my_project
+        options: cached
 tasks:
   melt:
     description: Open a shell in our cool meltano env to run some stuff. Make sure to launch_mock in a separate terminal tab!
     group: Do these tasks
     run:
-      container: build-env
+      container: build-env-cache
       entrypoint: sh
 
   clean:
