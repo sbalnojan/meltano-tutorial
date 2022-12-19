@@ -1,0 +1,22 @@
+name: Pipeline
+
+on: [push]
+
+jobs:
+  build:
+    name: "Build and Test"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3.2.0
+
+      - name: Run batect test in dev container
+        uses: devcontainers/ci@v0.2
+        with:    
+          # [Optional] If you have a separate workflow like the one above
+          # to pre-build your container image, you can reference it here
+          # to speed up your application build workflows as well!
+          # cacheFrom: ghcr.io/example/example-devcontainer
+
+          push: never
+          runCmd: ./batect test
