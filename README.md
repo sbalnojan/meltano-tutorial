@@ -67,3 +67,17 @@ Step 10:
 ## Part 2: ##
 https://docs.meltano.com/getting-started/part2
 
+For a quickstart, run `./batect clean; ./batect test_2`.  
+
+meltano add loader target-postgres --variant=meltanolabs
+meltano invoke target-postgres --help
+meltano config target-postgres set user meltano
+meltano config target-postgres set password password
+meltano config target-postgres set database postgres
+meltano config target-postgres set host host.docker.internal
+meltano config target-postgres set host postgres
+meltano config target-postgres set add_metadata_columns True
+
+meltano config target-postgres
+
+meltano run tap-github target-postgres

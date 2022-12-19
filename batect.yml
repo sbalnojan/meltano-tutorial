@@ -17,6 +17,17 @@ containers:
       - local: ./my_project
         container: /home/container-user/my_project
         options: cached
+
+  postgres:
+    image: postgres:13.4-bullseye
+    environment:
+      POSTGRES_USER: meltano
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+    ports:
+      - local: 5432
+        container: 5432
+
 tasks:
   melt:
     description: Open a shell in our cool meltano env to run some stuff. Make sure to launch_mock in a separate terminal tab!
@@ -25,18 +36,32 @@ tasks:
       container: build-env-cache
       entrypoint: sh
 
-  test:
+  melt_with_db:
     description: Open a shell in our cool meltano env to run some stuff. Make sure to launch_mock in a separate terminal tab!
+    group: Do these tasks
+    dependencies:
+      - postgres
+    run:
+      container: build-env-cache
+      entrypoint: sh
+      
+  test:
+    description: Test Tutorial Part 1
     group: Do these tasks
     run:
       container: build-env-cache
       entrypoint: sh -c 'meltano init . && cp ../new_project/meltano.yml meltano.yml && cp ../new_project/.env .env && meltano install'
-    
-
+ 
+  test_2:
+    description: Test tutorial part 2
+    group: Do these tasks
+    run:
+      container: build-env-cache
+      entrypoint: sh -c 'meltano init . && cp ../new_project/meltano_part2.yml meltano.yml && cp ../new_project/.env .env && meltano install'
+       
   clean:
     description: Delete meltano taps and so on to play around with the installation of plugins locally.
     group: Utility tasks
     run:
       container: build-env-cache
       entrypoint: sh -c 'ls -A1 | xargs rm -rf'
-  
