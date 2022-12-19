@@ -16,6 +16,7 @@
             "version": "latest",
             "moby": true,
             "dockerDashComposeVersion": "v1"
-        }
+        },
+            "java": "latest"
     }
 }
