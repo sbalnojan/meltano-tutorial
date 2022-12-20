@@ -24,7 +24,7 @@ Step 1:
 
 Step 2:
 
-``meltano add extractor tap-github``
+``meltano add extractor tap-github --variant=meltanolabs``
 
 
 Step 3:
@@ -69,15 +69,24 @@ https://docs.meltano.com/getting-started/part2
 
 For a quickstart, run `./batect clean; ./batect test_2`.  
 
-meltano add loader target-postgres --variant=meltanolabs
-meltano invoke target-postgres --help
-meltano config target-postgres set user meltano
-meltano config target-postgres set password password
-meltano config target-postgres set database postgres
-meltano config target-postgres set host host.docker.internal
-meltano config target-postgres set host postgres
-meltano config target-postgres set add_metadata_columns True
+Running with batect & codespaces.
 
-meltano config target-postgres
+1. inside codespaces run this command to open up the shell including a postgres database (dockerized, host name "postgres")
+``./batect melt_with_db``
 
-meltano run tap-github target-postgres
+Then go with
+
+```bash
+    meltano add loader target-postgres --variant=meltanolabs
+    meltano invoke target-postgres --help
+    meltano config target-postgres set user meltano
+    meltano config target-postgres set password password
+    meltano config target-postgres set database postgres
+    meltano config target-postgres set host postgres
+    meltano config target-postgres set add_metadata_columns True
+
+    meltano config target-postgres
+
+    meltano run tap-github target-postgres
+```
+
