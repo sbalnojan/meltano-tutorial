@@ -30,3 +30,5 @@ plugins:
       add_metadata_columns: 'True'
       host: postgres
       database: postgres
+      port: 5432
+      password: password
