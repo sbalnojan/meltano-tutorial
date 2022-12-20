@@ -9,7 +9,8 @@ containers:
       - local: ./my_project
         container: /home/container-user/my_project
         options: cached
-
+    environment:
+      TAP_GITHUB_AUTH_TOKEN: ${TAP_GITHUB_AUTH_TOKEN}
   postgres:
     image: postgres:13.4-bullseye
     environment:
