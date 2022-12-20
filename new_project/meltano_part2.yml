@@ -18,6 +18,16 @@ plugins:
     - commits.url
     - commits.sha
     - commits.commit_timestamp
+
+  - name: tap-csv
+    variant: meltanolabs
+    pip_url: git+https://github.com/MeltanoLabs/tap-csv.git
+    config:
+      files:
+      - entity: tap_github_test_data
+        path: test_data/tap_github.csv
+        keys: [id]
+
   loaders:
   - name: target-jsonl
     variant: andyh1203
