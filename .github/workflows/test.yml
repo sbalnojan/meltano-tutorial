@@ -15,6 +15,7 @@ jobs:
       TERM: xterm-256color
       BATECT_CACHE_TYPE: directory
       BATECT_ENABLE_TELEMETRY: true
+      AUTH_KEY_GITHUB: ${{ secrets.AUTH_KEY_GITHUB }}
 
     steps:
       - uses: actions/checkout@v3.2.0
