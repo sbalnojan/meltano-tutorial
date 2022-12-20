@@ -61,7 +61,7 @@ tasks:
       - postgres
     run:
       container: build-env-cache
-      entrypoint: sh -c 'meltano init .; cp ../new_project/meltano_part2.yml meltano.yml  && meltano install && mkdir test_data && mv ../new_project/tap_github.csv test_data/tap_github.csv; meltano run tap-csv target-postgres' #&& cp ../new_project/.env .env
+      entrypoint: sh -c 'meltano init .; cp ../new_project/meltano_part2.yml meltano.yml  && meltano install && mkdir test_data && cp ../new_project/tap_github.csv test_data/tap_github.csv; meltano run tap-csv target-postgres' #&& cp ../new_project/.env .env
   
 
   clean:
