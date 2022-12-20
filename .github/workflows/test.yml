@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-    name: "Build and Test"
+    name: "Test Tut Part 1"
     runs-on: ubuntu-latest
     env:
       TERM: xterm-256color
@@ -25,7 +25,7 @@ jobs:
           push: never
           runCmd: ./batect test
   int_test:
-    name: "Build and Test"
+    name: "Test Tut Part 2"
     runs-on: ubuntu-latest
     env:
       TERM: xterm-256color
