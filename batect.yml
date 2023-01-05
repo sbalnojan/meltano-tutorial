@@ -38,14 +38,23 @@ tasks:
       container: build-env-cache
       entrypoint: sh
       
-  test:
+  test_install:
     description: Test Tutorial Part 1
     group: Testing
     run:
       container: build-env-cache
-      entrypoint: sh -c 'meltano init . && cp ../new_project/meltano.yml meltano.yml  && meltano install' #&& cp ../new_project/.env .env
+      entrypoint: sh -c 'meltano init . && cp ../new_project/meltano.yml meltano.yml  && meltano install'
  
-  test_2:
+  test_tap:
+    description: Test tutorial part 2 - using real data
+    group: Testing
+    dependencies:
+      - postgres
+    run:
+      container: build-env-cache
+      entrypoint: sh -c 'meltano init .; cp ../new_project/meltano_part2.yml meltano.yml  && meltano install; meltano invoke tap-github'
+
+  test_tap_target:
     description: Test tutorial part 2 - using real data
     group: Testing
     dependencies:
@@ -54,7 +63,8 @@ tasks:
       container: build-env-cache
       entrypoint: sh -c 'meltano init .; cp ../new_project/meltano_part2.yml meltano.yml  && meltano install; meltano run tap-github target-postgres' #&& cp ../new_project/.env .env
 
-  test_3:
+
+  test_4:
     description: Test tutorial part 2 - using fixed data
     group: Testing
     dependencies:

@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: "Test Tut general"
+    name: "Test batect + meltano install"
     runs-on: ubuntu-latest
     env:
       TERM: xterm-256color
@@ -32,7 +32,7 @@ jobs:
           runCmd: ./batect test
           
   test_basic:
-    name: "Test Tut Part 1"
+    name: "Test tap"
     runs-on: ubuntu-latest
     env:
       TERM: xterm-256color
@@ -52,15 +52,15 @@ jobs:
           # cacheFrom: ghcr.io/example/example-devcontainer
 
           push: never
-          runCmd: ./batect test
+          runCmd: ./batect test_tap
   int_test:
-    name: "Test Tut Part 2"
+    name: "Test tap & target real data"
     runs-on: ubuntu-latest
     env:
       TERM: xterm-256color
       BATECT_CACHE_TYPE: directory
       BATECT_ENABLE_TELEMETRY: true
-      TAP_GITHUB_AUTH_TOKEN: ${{ secrets.AUTH_KEY_GITHUB }}
+      TAP_GITHUB_AUTH_TOKEN: ${{ secrets.TAP_GITHUB_AUTH_TOKEN }}
 
     steps:
       - uses: actions/checkout@v3.2.0
@@ -74,4 +74,4 @@ jobs:
           # cacheFrom: ghcr.io/example/example-devcontainer
 
           push: never
-          runCmd: ./batect test_2
+          runCmd: ./batect test_tap_target
