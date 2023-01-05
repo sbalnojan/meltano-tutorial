@@ -59,7 +59,13 @@ tasks:
       - postgres
     run:
       container: build-env-cache
-      entrypoint: sh -c 'meltano init .; cp ../new_project/meltano_part2.yml meltano.yml  && meltano install; meltano invoke tap-github'
+      entrypoint: |
+        sh -c 'meltano init .;
+        cp ../new_project/meltano_part2.yml meltano.yml  && meltano install;
+        first=$(date --date="$(date +'%Y-%m-01') - 1 month" +%Y-%m-%d);
+        echo "pulling from: ..." $first;
+        export TAP_GITHUB_START_DATE=$first;
+        meltano invoke tap-github'
 
   test_tap_target:
     description: Test tutorial part 2 - using real data
