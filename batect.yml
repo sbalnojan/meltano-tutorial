@@ -37,7 +37,14 @@ tasks:
     run:
       container: build-env-cache
       entrypoint: sh
-      
+    
+  test_batect:
+    description: Test that batect runs and mounts.
+    group: Testing
+    run:
+      container: build-env-cache
+      entrypoint: sh -c 'cp ../new_project/meltano.yml meltano.yml'
+       
   test_install:
     description: Test Tutorial Part 1
     group: Testing

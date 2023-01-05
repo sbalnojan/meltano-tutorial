@@ -36,7 +36,30 @@ jobs:
 
           push: main
           runCmd: ./batect test_install
-          
+
+  test_bat:
+    name: "Test batect"
+    runs-on: ubuntu-latest
+    env:
+      TERM: xterm-256color
+      BATECT_CACHE_TYPE: directory
+      BATECT_ENABLE_TELEMETRY: true
+      TAP_GITHUB_AUTH_TOKEN: ${{ secrets.TAP_GITHUB_AUTH_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v3.2.0
+
+      - name: Run batect test in dev container
+        uses: devcontainers/ci@v0.2
+        with:    
+          # [Optional] If you have a separate workflow like the one above
+          # to pre-build your container image, you can reference it here
+          # to speed up your application build workflows as well!
+          # cacheFrom: ghcr.io/example/example-devcontainer
+
+          push: main
+          runCmd: ./batect test_batect
+
   test_basic:
     name: "Test tap"
     runs-on: ubuntu-latest
