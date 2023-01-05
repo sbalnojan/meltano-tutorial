@@ -30,7 +30,7 @@ jobs:
         uses: devcontainers/ci@v0.2
         with:    
 
-          push: main
+          push: never
           runCmd: echo $TAP_GITHUB_AUTH_TOKEN; echo ${#TAP_GITHUB_AUTH_TOKEN} #./batect test_install
 
   test_bat:
