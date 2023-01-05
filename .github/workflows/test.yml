@@ -48,8 +48,10 @@ jobs:
       - name: Run batect test in dev container
         uses: devcontainers/ci@v0.2
         with:    
-
-
+          TERM: xterm-256color
+          BATECT_CACHE_TYPE: directory
+          BATECT_ENABLE_TELEMETRY: true
+          TAP_GITHUB_AUTH_TOKEN: ${{ secrets.TAP_GITHUB_AUTH_TOKEN }}
           push: never
           runCmd: ./batect test_batect
 
