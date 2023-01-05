@@ -71,7 +71,7 @@ tasks:
       entrypoint: sh -c 'meltano init .; cp ../new_project/meltano_part2.yml meltano.yml  && meltano install; meltano run tap-github target-postgres' #&& cp ../new_project/.env .env
 
 
-  test_4:
+  test_tap_target_fixed:
     description: Test tutorial part 2 - using fixed data
     group: Testing
     dependencies:

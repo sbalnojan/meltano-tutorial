@@ -107,3 +107,26 @@ jobs:
             TAP_GITHUB_AUTH_TOKEN
           push: never
           runCmd: ./batect test_tap_target
+
+  fix_test:
+    name: "Test tap & target real data"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.2.0
+      
+      - name: Run batect test_2 (with postgres) in dev container
+        env:  
+          TERM: xterm-256color
+          BATECT_CACHE_TYPE: directory
+          BATECT_ENABLE_TELEMETRY: true
+          TAP_GITHUB_AUTH_TOKEN: ${{ secrets.TAP_GITHUB_AUTH_TOKEN }}
+        uses: devcontainers/ci@v0.2
+        with:    
+          env: |
+            TERM
+            BATECT_CACHE_TYPE
+            BATECT_ENABLE_TELEMETRY
+            TAP_GITHUB_AUTH_TOKEN
+          push: never
+          runCmd: ./batect test_tap_target_fixed
+
