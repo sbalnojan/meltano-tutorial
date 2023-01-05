@@ -3,7 +3,7 @@ name: Pipeline for tutorial testing
 on: 
   push:
     branches:
-      - master
+      - main
   schedule:
     - cron:  '30 08 * * *'
   workflow_dispatch:
@@ -15,14 +15,8 @@ on:
 
 jobs:
   build:
-    name: "Test batect + meltano install"
+    name: "Test meltano install"
     runs-on: ubuntu-latest
-#    env:
-#      TERM: xterm-256color
-#     BATECT_CACHE_TYPE: directory
-#      BATECT_ENABLE_TELEMETRY: true
-#      TAP_GITHUB_AUTH_TOKEN: ${{ secrets.TAP_GITHUB_AUTH_TOKEN }}
-
     steps:
       - uses: actions/checkout@v3.2.0
 
@@ -35,7 +29,7 @@ jobs:
           TAP_GITHUB_AUTH_TOKEN: ${{ secrets.TAP_GITHUB_AUTH_TOKEN }}
         with:  
           push: never
-          runCmd: ./batect test_install #echo $TAP_GITHUB_AUTH_TOKEN; echo ${#TAP_GITHUB_AUTH_TOKEN}; echo $BATECT_CACHE_TYPE; echo $TERM #
+          runCmd: ./batect test_install 
           env: |
             TERM
             BATECT_CACHE_TYPE
@@ -87,7 +81,7 @@ jobs:
           push: never
           runCmd: ./batect test_tap
   int_test:
-    name: "Test tap & target real data"
+    name: "Test real tap & target"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.2.0
@@ -109,7 +103,7 @@ jobs:
           runCmd: ./batect test_tap_target
 
   fix_test:
-    name: "Test tap & target real data"
+    name: "Test fixed tap & target"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.2.0
