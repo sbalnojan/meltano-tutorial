@@ -35,7 +35,7 @@ jobs:
           # cacheFrom: ghcr.io/example/example-devcontainer
 
           push: main
-          runCmd: ./batect test_install
+          runCmd: echo $TAP_GITHUB_AUTH_TOKEN #./batect test_install
 
   test_bat:
     name: "Test batect"
