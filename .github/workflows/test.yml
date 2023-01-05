@@ -6,6 +6,12 @@ on:
       - master
   schedule:
     - cron:  '30 08 * * *'
+  workflow_dispatch:
+    tags:
+    description: 'Test scenario tags'
+    required: false
+    type: boolean
+
 
 jobs:
   build:
