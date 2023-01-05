@@ -35,7 +35,13 @@ jobs:
           TAP_GITHUB_AUTH_TOKEN: ${{ secrets.TAP_GITHUB_AUTH_TOKEN }}
         with:  
           push: never
-          runCmd: echo $TAP_GITHUB_AUTH_TOKEN; echo ${#TAP_GITHUB_AUTH_TOKEN}; echo $BATECT_CACHE_TYPE; echo $Term #./batect test_install
+          runCmd: echo $TAP_GITHUB_AUTH_TOKEN; echo ${#TAP_GITHUB_AUTH_TOKEN}; echo $BATECT_CACHE_TYPE; echo $TERM #./batect test_install
+          env: |
+            TERM
+            BATECT_CACHE_TYPE
+            BATECT_ENABLE_TELEMETRY
+            TAP_GITHUB_AUTH_TOKEN
+
 
   test_bat:
     name: "Test batect"
