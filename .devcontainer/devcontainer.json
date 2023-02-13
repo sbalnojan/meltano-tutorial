@@ -3,6 +3,7 @@
     "extensions": [
         "z3z1ma.meltano-power-user",
         "redhat.vscode-yaml",
+        "ckolkman.vscode-postgres",
     ],
     "dockerFile": "Dockerfile",
     "settings": {
